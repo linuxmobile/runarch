@@ -7,4 +7,4 @@ lxsession xautolock rxvt-unicode-patched xclip scrot thunar thunar-archive-plugi
 thunar-media-tags-plugin ffmpegthumbnailer tumbler viewnior mpv mpd mpc ncmpcpp pavucontrol \
 parcellite neofetch w3m htop picom-git obmenu-generator gtk2-perl playerctl xsettingsd \
 geany geany-plugins scrcpy sndcpy krita gimp inkscape obs-studio lxappearance file-roller nano nano-syntax-highlighting \
-obconf neovim slim colorpicker 
+obconf neovim slim colorpicker gvfs gvfs-mtp 
