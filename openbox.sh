@@ -7,4 +7,4 @@ qt5-styleplugins lxsession xautolock rxvt-unicode-truecolor-wide-glyphs xclip sc
 thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler viewnior mpv mpd mpc ncmpcpp \
 pavucontrol parcellite neofetch w3m htop picom-git obmenu-generator gtk2-perl playerctl xsettingsd \
 geany geany-plugins scrcpy sndcpy krita gimp inkscape obs-studio lxappearance file-roller nano nano-syntax-highlighting \
-obconf neovim slim colorpicker gvfs gvfs-mtp exa bat firefox telegram-desktop
+obconf neovim slim colorpicker gvfs gvfs-mtp exa bat firefox telegram-desktop pipewire-pulse
