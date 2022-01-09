@@ -1,11 +1,9 @@
 #!/bin/sh
 
 # Install Arch Dependencies and Packages to work everything
-yay -S i3-gaps alsa-utils pulseaudio pulseaudio-alsa brightnessctl psuinfo wireless_tools /
-dunst tint2 gsimplecal rofi feh lxappearance qt5ct qt5-styleplugins lxsession xautolock /
-rxvt-unicode-patched xclip scrot thunar thunar-archive-plugin thunar-media-tags-plugin /
-thunar-volman lxsession tumbler jq w3m geany nano vim viewnior pavucontrol parcellite /
-neofetch htop picom-git gtk2-perl xfce4-power-manager imagemagick playerctl /
-networkmanager-dmenu xsettingsd gimp inkscape krita obs-studio gvfs /
-gvfs-mtp nitrogen scrcpy sndcpy file-roller firefox telegram-desktop /
-nano-syntax-highlighting colorpicker python ncmpcpp mpc mpd mpv geany-plugins neovim exa bat
+paru -S python ffmpeg pulseaudio pulseaudio-alsa alsa-utils dunst xclip scrot     \\
+thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler w3m          \\
+viewnior mpv neofetch htop lxappearance picom-jonaburg-git rofi rsync pavucontrol \\
+ranger python-pip noto-fonts-emoji noto-fonts-cjk python-pillow-git xwallpaper    \\
+exa bat file-roller geany geany-plugins gvfs gvfs-mtp htop kitty wal-git imlib2   \\
+xorg-xsetroot cascaydia-code-fonts nerd-fonts-jetbrains-mono nerd-fonts-noto
