@@ -1,0 +1,23 @@
+# Maintainer: twitter.com/linuxmobileok
+pkgname=runarch
+destname="/usr/bin"
+srclang="/usr/share/runarch"
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="Arch installer"
+arch=('any')
+url="https://github.com/linuxmobile/runarch/"
+license=('GPL3')
+makedepends=('git')
+depends=('curl')
+provides=("${pkgname}")
+options=(!strip !emptydirs)
+source=(${pkgname}::"git+https://github.com/linuxmobile/${pkgname}.git")
+sha256sums=('SKIP')
+
+package() {
+    mkdir -p "${pkgdir}${srclang}"
+    mkdir -p "${pkgdir}${destname}"
+    cp -r "${srcdir}/${pkgname}/lang" "${pkgdir}${srclang}"
+    cp -r "${srcdir}/${pkgname}/arsh" "${pkgdir}${destname}"
+}
