@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sleep 1
     echo -e "$prefix Install Oh-My-Zsh plugins..."
     echo -e "$prefix If this don't work, delete this posix too."
