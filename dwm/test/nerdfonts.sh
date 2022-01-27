@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sleep 1
     echo -e "$prefix Downloading Nerd Fonts..."
     echo -e "$prefix If this don't work, delete this posix!"
