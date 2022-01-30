@@ -103,6 +103,7 @@ installZSH() {
     
             cd $HOME/
             sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            exit
         
     echo -e "$prefix Oh-My-Zsh installed!"
     sleep 0.7
@@ -136,7 +137,7 @@ installNerdFonts() {
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/Iosevka.zip
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/JetBrainsMono.zip
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/Noto.zip
-        unzip *.zip -d $HOME/Downloads/nerdfonts/
+        unzip '*.zip' -d $HOME/Downloads/nerdfonts/
         rm -rf *.zip
     
     echo -e "$prefix nerdfonts downloaded!"
