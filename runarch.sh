@@ -200,7 +200,7 @@ diskpartmenu(){
         diskpartautoefi
         nextitem="${txtautoparts} (gpt,efi)"
       ;;
-      "${txtautoparts} (gpt,bios+efi,noswap)")
+      "${txtautoparts} (gpt,efi,noswap)")
         diskpartautoefiusb
         nextitem="${txtautoparts} (gpt,efi,noswap)"
       ;;
