@@ -21,8 +21,12 @@ installParu() {
     echo -e "$prefix Install paru as AUR helper..."
     echo -e "$prefix Installing paru..."
     
+	if [[ -e /usr/bin/paru ]]; then
+	paru -Syu
+	else
         git clone https://aur.archlinux.org/paru.git $HOME/Downloads/.installer
         cd $HOME/Downloads/.installer/ && makepkg -si
+	fi
     
     echo -e "$prefix Paru installed!"
     sleep 0.7
@@ -41,13 +45,12 @@ downloadDependencies() {
         if [[ -e /usr/bin/paru ]]; then
             echo -e "$prefix paru detected. Installing dependencies..."
             paru -S python ffmpeg pipewire pipewire-alsa pipewire-pulse alsa-utils dunst       \
-            thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler w3m neovim    \
+            thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler neovim        \
             viewnior mpv htop lxappearance picom-jonaburg-fix rofi rsync pavucontrol farge-git \
             ranger python-pip noto-fonts-emoji noto-fonts-cjk xwallpaper xcolor imlib2 fzf     \
-            exa bat file-roller geany geany-plugins gvfs gvfs-mtp htop wal-git imlib2 xclip    \
-            xorg-xsetroot simplescreenrecorder ytfzfim cava ps_mem unimatrix xdg-user-dirs     \
-            ueberzug pacman-contrib catppuccin-gtk-theme xdotool xclip scrot noto-fonts
-
+            exa bat file-roller gvfs gvfs-mtp htop imlib2 xclip firefox libxft-bgra rofi-emoji \
+            xorg-xsetroot simplescreenrecorder ytfzfim cava xdg-user-dirs xcolor  noto-fonts   \
+            ueberzug pacman-contrib catppuccin-gtk-theme xdotool xclip scrot
         elif [[ -e /usr/bin/yay ]]; then
             echo -e "$prefix yay detected. Installing dependencies..."
             yay -S python ffmpeg pipewire pipewire-alsa pipewire-pulse alsa-utils dunst scrot  \
@@ -128,12 +131,12 @@ installNerdFonts() {
     echo -e "$prefix If this don't work, delete this posix!"
     
         mkdir -p $HOME/Downloads/nerdfonts/
-        cd $HOME/Downloads/nerdfonts
+        cd $HOME/Downloads/
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/CascadiaCode.zip
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/Iosevka.zip
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/JetBrainsMono.zip
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/Noto.zip
-        unzip *.zip $HOME/Downloads/nerdfonts/
+        unzip *.zip -d $HOME/Downloads/nerdfonts/
         rm -rf *.zip
     
     echo -e "$prefix nerdfonts downloaded!"
@@ -160,29 +163,15 @@ copyFiles() {
     echo -e "$prefix Syncing files..."
     echo -e "$prefix Will make a sync if dwm, config and scripts doesn't exists."
 
-        cd $HOME/Downloads/
-        git clone https://github.com/linuxmobile/dwm-dots
-        cd $HOME/Downloads/dwm-dots
-        rsync -avxHAXP --exclude '.git*' .* ~/
-
+        cd $HOME/Documents/
+        git clone --depth 1 https://github.com/linuxmobile/dwm-dots.git
+        rsync -avxHAXP --exclude '.git*' --exclude '*.md' dwm-dots/ ~/
     echo -e "$prefix Synced all configs files!"
-    sleep 0.7
-
-        cd $HOME/Downloads/dwm-dots
-        mkdir $HOME/lnxdwm/ && cp -r ./lnxdwm/* $HOME/lnxdwm/
-
-    echo -e "$prefix Copied DWM configuration!"
     sleep 0.7
 
         cd $HOME/lnxdwm/ && sudo make install
 
     echo -e "$prefix Make DWM magic!"
-    sleep 0.7
-
-        cd $HOME/Downloads/dwm-dots
-        mkdir $HOME/st/ && cp -r ./st/* $HOME/st/
-
-    echo -e "$prefix Copied st configuration!"
     sleep 0.7
 
         cd $HOME/st/ && sudo make install
