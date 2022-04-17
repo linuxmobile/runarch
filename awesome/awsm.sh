@@ -49,17 +49,17 @@ downloadDependencies() {
             viewnior mpv htop lxappearance picom-jonaburg-fix rofi rsync pavucontrol awesome-git  \
             ranger python-pip noto-fonts noto-fonts-emoji noto-fonts-cjk imlib2 fzf todo-bin      \
             exa bat file-roller gvfs gvfs-mtp htop imlib2 xclip alsa-utils alsa-tools xclip       \
-            xorg-xsetroot ytfzfim cava  xdg-user-dirs mpd mpc mpdris2 ncmpcpp playerctl xdotool   \
-            ueberzug pacman-contrib
+            xorg-xsetroot ytfzfim cava xdg-user-dirs mpd mpc mpdris2 ncmpcpp playerctl xdotool    \
+            ueberzug pacman-contrib jq
         elif [[ -e /usr/bin/yay ]]; then
             echo -e "$prefix yay detected. Installing dependencies..."
-            yay -S python ffmpeg pipewire pipewire-alsa pipewire-pulse alsa-utils inotify-tools  \
+            yay -S python ffmpeg pipewire pipewire-alsa pipewire-pulse alsa-utils inotify-tools   \
             thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler w3m neovim       \
             viewnior mpv htop lxappearance picom-jonaburg-fix rofi rsync pavucontrol awesome-git  \
             ranger python-pip noto-fonts noto-fonts-emoji noto-fonts-cjk imlib2 fzf todo-bin      \
             exa bat file-roller gvfs gvfs-mtp htop imlib2 xclip alsa-utils alsa-tools xclip       \
-            xorg-xsetroot ytfzfim cava  xdg-user-dirs mpd mpc mpdris2 ncmpcpp playerctl xdotool   \
-            ueberzug pacman-contrib
+            xorg-xsetroot ytfzfim cava xdg-user-dirs mpd mpc mpdris2 ncmpcpp playerctl xdotool    \
+            ueberzug pacman-contrib jq
         else
             # Line from https://github.com/Axarva/dotfiles-2.0/blob/9f0a71d7b23e1213383885f2ec641da48eb01681/install-on-arch.sh#L67
             read -r -p "Would you like to install paru? [Y/n]: " paru
@@ -77,7 +77,7 @@ downloadDependencies() {
                     ranger python-pip noto-fonts noto-fonts-emoji noto-fonts-cjk imlib2 fzf todo-bin      \
                     exa bat file-roller gvfs gvfs-mtp htop imlib2 xclip alsa-utils alsa-tools xclip       \
                     xorg-xsetroot ytfzfim cava  xdg-user-dirs mpd mpc mpdris2 ncmpcpp playerctl xdotool   \
-                    ueberzug pacman-contrib 
+                    ueberzug pacman-contrib jq
                     ;;
                 [nN])
                     echo -e "$prefix Okay. Will not install paru."
@@ -92,23 +92,6 @@ downloadDependencies() {
 
         sleep 1
     fi
-}
-
-installZSH() {
-    clear
-    
-    sleep 1
-    echo -e "$prefix Install Oh-My-Zsh..."
-    echo -e "$prefix If this don't work, delete this posix."
-    	    if [[ -e $HOME/.oh-my-zsh/ ]]; then
-	    clear
-	    else
-            cd $HOME/
-            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	    fi
-        
-    echo -e "$prefix Oh-My-Zsh installed!"
-    sleep 0.7
 }
 
 clonePlugins() {
@@ -137,7 +120,6 @@ installNerdFonts() {
         cd $HOME/Downloads/
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/CascadiaCode.zip
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/Iosevka.zip
-        wget https://github.com/ryanoasis/nerd-fonts/releases/download/2.2.0-RC/JetBrainsMono.zip
         unzip '*.zip' -d $HOME/Downloads/nerdfonts/
         rm -rf *.zip
     
@@ -172,19 +154,6 @@ copyFiles() {
         cp -r bin/* ~/.local/bin/
         cp -r misc/. ~/
     echo -e "$prefix Synced all configs files!"
-    sleep 0.7
-
-        cd $HOME/lnxdwm/ && sudo make install
-
-    echo -e "$prefix Make DWM magic!"
-    sleep 0.7
-
-        cd $HOME/st/ && sudo make install
-
-    echo -e "$prefix Make ST happen!"
-
-    sleep 0.7
-    echo -e "$prefix Synced files successfully."
     sleep 1.3
 }
 
