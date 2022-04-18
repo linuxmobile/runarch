@@ -745,7 +745,7 @@ installbase(){
   #pacman-key --init
   #pacman-key --populate archlinux
   #pacman-key --refresh-keys
-  pacstrap /mnt base base-devel linux linux-headers nano netctl dhcpcd which inetutils wpa_supplicant dialog btrfs-progs dosfstools efitools git wget curl zsh
+  pacstrap /mnt base base-devel linux linux-headers nano dhcpcd which btrfs-progs dosfstools efitools git wget curl zsh
   pressanykey
 }
 
