@@ -44,22 +44,21 @@ downloadDependencies() {
 
         if [[ -e /usr/bin/paru ]]; then
             echo -e "$prefix paru detected. Installing dependencies..."
-            paru -S python ffmpeg pipewire pipewire-alsa pipewire-pulse alsa-utils dunst       \
-            thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler neovim        \
-            viewnior mpv htop lxappearance picom-jonaburg-fix rofi rsync pavucontrol farge-git \
-            ranger python-pip noto-fonts-emoji noto-fonts-cjk xwallpaper xcolor imlib2 fzf     \
-            exa bat file-roller gvfs gvfs-mtp htop imlib2 xclip firefox libxft-bgra rofi-emoji \
-            xorg-xsetroot simplescreenrecorder ytfzfim cava xdg-user-dirs xcolor  noto-fonts   \
-            ueberzug pacman-contrib catppuccin-gtk-theme xdotool xclip scrot
+            paru -S python ffmpeg pipewire pipewire-alsa pipewire-pulse pacman-contrib         \
+            thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler alsa-utils    \
+            viewnior mpv htop lxappearance picom-jonaburg-fix rofi rsync pavucontrol  dunst    \
+            ranger python-pip noto-fonts-emoji noto-fonts-cjk xwallpaper xcolor imlib2 neovim  \
+            exa bat file-roller gvfs gvfs-mtp htop xclip firefox libxft-bgra rofi-emoji fzf    \
+            xorg-xsetroot ytfzfim cava xdg-user-dirs noto-fonts xdotool xclip scrotueberzug    \
+            
         elif [[ -e /usr/bin/yay ]]; then
             echo -e "$prefix yay detected. Installing dependencies..."
-            yay -S python ffmpeg pipewire pipewire-alsa pipewire-pulse alsa-utils dunst scrot  \
-            thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler w3m neovim    \
-            viewnior mpv htop lxappearance picom-jonaburg-fix rofi rsync pavucontrol farge-git \
-            ranger python-pip noto-fonts-emoji noto-fonts-cjk xwallpaper xcolor imlib2 fzf     \
-            exa bat file-roller geany geany-plugins gvfs gvfs-mtp htop wal-git imlib2 xclip    \
-            xorg-xsetroot simplescreenrecorder ytfzfim cava ps_mem unimatrix xdg-user-dirs     \
-            ueberzug pacman-contrib catppuccin-gtk-theme xdotool noto-fonts
+            yay -S python ffmpeg pipewire pipewire-alsa pipewire-pulse pacman-contrib          \
+            thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler alsa-utils    \
+            viewnior mpv htop lxappearance picom-jonaburg-fix rofi rsync pavucontrol  dunst    \
+            ranger python-pip noto-fonts-emoji noto-fonts-cjk xwallpaper xcolor imlib2 neovim  \
+            exa bat file-roller gvfs gvfs-mtp htop xclip firefox libxft-bgra rofi-emoji fzf    \
+            xorg-xsetroot ytfzfim cava xdg-user-dirs noto-fonts xdotool xclip scrotueberzug    \
         else
             # Line from https://github.com/Axarva/dotfiles-2.0/blob/9f0a71d7b23e1213383885f2ec641da48eb01681/install-on-arch.sh#L67
             read -r -p "Would you like to install paru? [Y/n]: " paru
@@ -71,13 +70,12 @@ downloadDependencies() {
                     (cd $HOME/Downloads/.installer && makepkg -si)
 
                     echo -e "$prefix paru installed. Installing dependencies..."
-                    paru -S python ffmpeg pipewire pipewire-alsa pipewire-pulse alsa-utils dunst       \
-                    thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler w3m neovim    \
-                    viewnior mpv htop lxappearance picom-jonaburg-fix rofi rsync pavucontrol farge-git \
-                    ranger python-pip noto-fonts-emoji noto-fonts-cjk xwallpaper xcolor imlib2 fzf     \
-                    exa bat file-roller geany geany-plugins gvfs gvfs-mtp htop wal-git imlib2 xclip    \
-                    xorg-xsetroot simplescreenrecorder ytfzfim cava ps_mem unimatrix xdg-user-dirs     \
-                    ueberzug pacman-contrib catppuccin-gtk-theme xdotool xclip scrot noto-fonts
+            paru -S python ffmpeg pipewire pipewire-alsa pipewire-pulse pacman-contrib         \
+            thunar thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler alsa-utils    \
+            viewnior mpv htop lxappearance picom-jonaburg-fix rofi rsync pavucontrol  dunst    \
+            ranger python-pip noto-fonts-emoji noto-fonts-cjk xwallpaper xcolor imlib2 neovim  \
+            exa bat file-roller gvfs gvfs-mtp htop xclip firefox libxft-bgra rofi-emoji fzf    \
+            xorg-xsetroot ytfzfim cava xdg-user-dirs noto-fonts xdotool xclip scrotueberzug    \
                     ;;
                 [nN])
                     echo -e "$prefix Okay. Will not install paru."
@@ -94,23 +92,6 @@ downloadDependencies() {
     fi
 }
 
-installZSH() {
-    clear
-    
-    sleep 1
-    echo -e "$prefix Install Oh-My-Zsh..."
-    echo -e "$prefix If this don't work, delete this posix."
-    	    if [[ -e $HOME/.oh-my-zsh/ ]]; then
-	    clear
-	    else
-            cd $HOME/
-            sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	    fi
-        
-    echo -e "$prefix Oh-My-Zsh installed!"
-    sleep 0.7
-}
-
 clonePlugins() {
     clear
     
@@ -118,7 +99,7 @@ clonePlugins() {
     echo -e "$prefix Install Oh-My-Zsh plugins..."
     echo -e "$prefix If this don't work, delete this posix too."
     
-        git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+        git clone --depth 1 https://github.com/zdharma-continuum/fast-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/fast-syntax-highlighting
         git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
         git clone --depth 1 https://github.com/zsh-users/zsh-completions.git $HOME/.oh-my-zsh/custom/plugins/zsh-completions
     
